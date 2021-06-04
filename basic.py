@@ -1,6 +1,12 @@
 import sys,os
 class basicdb:
     
+    def delete_database(self,name):
+        os.remove(name+".senior")
+    
+    
+    
+    
     def create_database(self,name,sizeX,sizeY):
         
         
@@ -13,12 +19,12 @@ class basicdb:
             array.append([])
         for i in range(0,len(array)):
             
-            array[i].append(str(i + 1))
-            for t in range(0,sizeX + 1):
+            
+            for t in range(0,sizeX):
                 array[i].append(" | ")
         
         for n in range(0,len(array)):
-            for m in range(0,sizeX + 2):
+            for m in range(0,sizeX):
                 file.write(array[n][m])
             file.write("\n")
         
@@ -32,6 +38,13 @@ class basicdb:
         resultado1=lines1.splitlines()
         numn1 = len(resultado1)
         return numn1
+    def sizeX(self,name):
+        filename = name + ".senior"
+        file = open(filename,"r")
+        lines1 = file.read()
+        file.close()
+        FsizeX = lines1.split("\n")[0].count("|")
+        return FsizeX
         
         
         
@@ -132,7 +145,6 @@ class basicdb:
       
       
         
-      
         
       
         
